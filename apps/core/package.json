@@ -2,18 +2,30 @@
   "name": "core",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "dev": "set DEBUG=core && nodemon app.js",
-    "start": "set DEBUG=core && node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "with-env": "dotenv -e ../../.env",
+    "prisma:generate": "npm run with-env -- prisma generate",
+    "prisma:push": "npm run with-env -- prisma db push",
+    "watch": "tsc -w",
+    "dev": "set DEBUG=core && npm run with-env -- nodemon ./dist/app.js",
+    "start": "set DEBUG=core && npm run with-env -- node ./dist/app.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "debug": "^4.3.7",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "kysely": "^0.27.4",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.9.0",
+    "nodemon": "^3.1.7",
+    "prisma": "^5.22.0",
+    "prisma-kysely": "^1.8.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
   }
 }

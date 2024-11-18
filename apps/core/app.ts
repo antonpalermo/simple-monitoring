@@ -1,9 +1,10 @@
 import http from "node:http";
 import express from "express";
+
 import cors from "cors";
 import debug from "debug";
 
-import pingRoute from "./routes/ping.js";
+import pingRoute from "./routes/ping";
 
 const logger = debug("core");
 
