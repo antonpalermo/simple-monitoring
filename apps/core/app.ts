@@ -5,6 +5,7 @@ import cors from "cors";
 import debug from "debug";
 
 import pingRoute from "./routes/ping";
+import transactionRoute from "./routes/transaction";
 
 const logger = debug("core");
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "*" }));
 
 app.use("/status", pingRoute);
+app.use("/transaction", transactionRoute);
 
 const server = http.createServer(app);
 
