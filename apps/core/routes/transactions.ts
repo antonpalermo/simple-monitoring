@@ -5,7 +5,16 @@ import { generateUniqueID } from "../utils/generate-id";
 
 const router: Router = Router({ strict: true });
 
-router.post("/transact", async (req: Request, res: Response) => {
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    const txns = await db.selectFrom("transactions").selectAll().execute();
+    return res.status(200).json(txns);
+  } catch (error) {
+    throw error;
+  }
+});
+
+router.post("/create", async (req: Request, res: Response) => {
   try {
     const txn = await db
       .insertInto("transactions")
