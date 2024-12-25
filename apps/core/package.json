@@ -8,6 +8,7 @@
     "prisma:generate": "npm run with-env -- prisma generate",
     "prisma:push": "npm run with-env -- prisma db push",
     "watch": "tsc -w",
+    "build": "tsc",
     "dev": "set DEBUG=core && npm run with-env -- nodemon ./dist/app.js",
     "start": "set DEBUG=core && npm run with-env -- node ./dist/app.js"
   },
